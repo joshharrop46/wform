@@ -1,14 +1,14 @@
 <?php 
 register_sidebar(array('name'=>'left Sidebar',
-'before_widget' => '<div class="pingilan">', 
+'before_widget' => '<div class="dipingit">', 
 'after_widget' => '</div>', 
-'before_title' => '<div id="pie">', 
+'before_title' => '<div id="how">', 
 'after_title' => '</div>', 
 ));
 register_sidebar(array('name'=>'right Sidebar',
-'before_widget' => '<div class="pingilan">', 
+'before_widget' => '<div class="dipingit">', 
 'after_widget' => '</div>', 
-'before_title' => '<div id="pie">', 
+'before_title' => '<div id="how">', 
 'after_title' => '</div>', 
 ));
 ?>

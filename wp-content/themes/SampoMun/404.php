@@ -5,7 +5,7 @@ $title= str_replace($edit, ' ', $_SERVER['REQUEST_URI']);
 get_header();
 ?>
 <div style="clear: both"></div>
-<div id="aprelik">
+<div id="lamtur">
 <?php include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 <div id="content">
 <div class="post">

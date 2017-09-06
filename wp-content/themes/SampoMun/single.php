@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div style="clear: both"></div>
-<div id="aprelik">
+<div id="lamtur">
 <?php include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 <div id="content">
 <?php if (have_posts()) :?><?php $postCount=0; ?><?php while (have_posts()) : the_post();?><?php $postCount++;?>
