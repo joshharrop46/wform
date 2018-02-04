@@ -1,13 +1,13 @@
 /*  
-Theme Name: Shampo tanpa ketombe
+Theme Name: Rambut Tanpa Kepala
 Theme URI: http://openshiftapps.com/
-Description: fastest wordpress <a href="http://pdf-wform.b9ad.pro-us-east-1.openshiftapps.com/">fast loading wordpress themes</a>.
+Description: fastest wordpress <a href="http://read-9form.b9ad.pro-us-east-1.openshiftapps.com/">fast loading wordpress themes</a>.
 Version: 8.15.1
-Author: Pacito Desap
+Author: Milano Wekin
 Author URI: http://openshiftapps.com/
 */
 
-#metemesob{width:960px;margin-right:auto;margin-left:auto;background-color:#e0575c;border:1px solid #dbdbdb;}
+#sormatamu{width:960px;margin-right:auto;margin-left:auto;background-color:#e0575c;border:1px solid #dbdbdb;}
 body{margin:0px auto 0px;padding:0px;font-family:Trebuchet MS, Helvetica, Arial;font-size:12px;color:#000000;width:990px;background-color:#14c7bb;}
 h1{font-size:18px;margin:0px;text-decoration:none;font-weight:bold;text-transform:capitalize;padding-right:0px;padding-bottom:3px;padding-left:0px;}
 h2{text-decoration:none;font-size:15px;margin:0px;font-weight:bold;padding-bottom:3px;text-transform:capitalize;}
@@ -26,14 +26,14 @@ img.alignleft{display:inline;margin-top:5px;margin-bottom:5px;margin-right:5px;b
 #topads{float:none;font-size:12px;color:#999999;text-align:left;width:960px;background-color:#FFFFFF;}
 #topads-left{float:left;width:728px;}
 #topads-right{float:right;text-align:right;width:220px;padding-right:10px;padding-top:5px;}
-#njay{background-position:0px 0px;width:950px;height:105px;background-color:#000000;padding-right:5px;padding-left:5px;padding-bottom:10px;}
-#njay-kirteng{float:left;width:450px;}
-#njay-kiwkan{float:right;text-align:left;width:430px;padding-top:5px;}
-#njay .logo{font-size:33px;font-family:Impact;font-weight:normal;color:#ffffff;float:center;text-align:center;padding-center:10px;float:center;background-position:center;padding-top:0px;clear:both;width:100%;text-transform:uppercase;}
-#njay a{text-decoration:none;color:#e3d403;}
-#njay .desc{font-size:14px;font-family:Verdana, Arial, Helvetica, sans-serif;padding-left:10px;}
+#mooning{background-position:0px 0px;width:950px;height:105px;background-color:#000000;padding-right:5px;padding-left:5px;padding-bottom:10px;}
+#mooning-kirteng{float:left;width:450px;}
+#mooning-kiwkan{float:right;text-align:left;width:430px;padding-top:5px;}
+#mooning .logo{font-size:33px;font-family:Impact;font-weight:normal;color:#ffffff;float:center;text-align:center;padding-center:10px;float:center;background-position:center;padding-top:0px;clear:both;width:100%;text-transform:uppercase;}
+#mooning a{text-decoration:none;color:#e3d403;}
+#mooning .desc{font-size:14px;font-family:Verdana, Arial, Helvetica, sans-serif;padding-left:10px;}
 #nav{float:left;width:970px;font-size:12px;display:inline;margin-right:0px;margin-bottom:0px;height:auto;padding-top:0px;padding-bottom:0px;border-top-width:1px;border-top-style:solid;border-top-color:#DFDFDF;}
-#lamtur{width:940px;background-color:#FFFFFF;padding-top:0px;padding-right:10px;padding-bottom:0px;padding-left:10px;}
+#dramquin{width:940px;background-color:#FFFFFF;padding-top:0px;padding-right:10px;padding-bottom:0px;padding-left:10px;}
 #content{float:left;width:694px;background-color:#FFFFFF;padding-top:0px;margin-top:0px;margin-right:10px;margin-bottom:5px;margin-left:10px;}
 #contents{float:left;width:628px;}
 #contentimage{background-color:#FFFFFF;height:auto;width:930px;padding:10px;}
@@ -78,10 +78,10 @@ img.alignleft{display:inline;margin-top:5px;margin-bottom:5px;margin-right:5px;b
 #sidebarleft ul li ul li,#sidebarright ul li ul li{border:0;}
 #breadchumb{float:none;font-size:12px;text-align:left;margin-bottom:0px;width:100%;padding-bottom:5px;color:#999999;}
 #breadchumb a{text-decoration:none;padding-right:1px;margin-right:1px;color:#999999;}
-#mympol{width:960px;height:auto;text-align:left;font-size:15px;padding-top:3px;padding-bottom:3px;background-color:#f6f6f6;color:#dd3c42;border-top-width:1px;border-top-style:solid;border-top-color:#dbdbdb;}
-#mympol a{padding-right:5px;color:#dd3c42;}
-#tuago{width:960px;height:auto;text-align:center;font-size:11px;padding-top:3px;padding-bottom:3px;background-color:#f6f6f6;color:#666666;border-top-width:1px;border-top-style:solid;border-top-color:#dbdbdb;}
-#tuago a{padding-right:5px;color:#666666;}
+#fredmqer{width:960px;height:auto;text-align:left;font-size:15px;padding-top:3px;padding-bottom:3px;background-color:#f6f6f6;color:#dd3c42;border-top-width:1px;border-top-style:solid;border-top-color:#dbdbdb;}
+#fredmqer a{padding-right:5px;color:#dd3c42;}
+#cotinyo{width:960px;height:auto;text-align:center;font-size:11px;padding-top:3px;padding-bottom:3px;background-color:#f6f6f6;color:#666666;border-top-width:1px;border-top-style:solid;border-top-color:#dbdbdb;}
+#cotinyo a{padding-right:5px;color:#666666;}
 #post-navigator{padding:0px;clear:both;height:auto;width:100%;display:block;margin-top:1em;margin-right:auto;margin-bottom:1em;margin-left:auto;font-size:10px;}
 .wp-pagenavi{width:100%;clear:both;padding-top:0.5em;padding-right:0px;padding-bottom:0.5em;padding-left:0px;height:auto;text-align:center;margin-top:0px;margin-right:auto;margin-bottom:0px;margin-left:auto;}
 .pages{color:#666666;padding-top:5px;padding-right:8px;padding-bottom:5px;padding-left:8px;width:auto;height:auto;margin-top:0px;margin-right:3px;margin-bottom:0px;margin-left:0px;border:1px solid #999999;}

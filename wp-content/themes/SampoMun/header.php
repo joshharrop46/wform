@@ -26,7 +26,7 @@
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <link rel="Shortcut Icon" href="<?php bloginfo('stylesheet_directory');?>/images/favicon.ico" type="image/x-icon" />
 
-<?php if ( is_search() || is_tag() ) : ?><link rel="canonical" href="<?php bloginfo('url');?>/pap/<?php $ab=strtolower($s); echo str_replace(' ', '-',$ab); ?>/" />
+<?php if ( is_search() || is_tag() ) : ?><link rel="canonical" href="<?php bloginfo('url');?>/apa/<?php $ab=strtolower($s); echo str_replace(' ', '-',$ab); ?>/" />
 <meta name="keywords" content="<?php the_search_query(); ?> "/>
 <meta name="description" content="<?php echo spp(get_search_query(), 'metadesc.html'); ?> "/>
 
@@ -43,11 +43,11 @@
 </script>
 </head>
 <body <?php body_class(''); ?>> 
-<div id="metemesob">
-<div id="njay">
-<div id="njay-kirteng">
+<div id="sormatamu">
+<div id="mooning">
+<div id="mooning-kirteng">
 </div>
-<div id="njay-kiwkan">
+<div id="mooning-kiwkan">
 </div>
 <center>
 <a href="<?php bloginfo('url'); ?>"><?php $header_image = get_header_image();

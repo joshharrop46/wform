@@ -5,12 +5,12 @@ $title= str_replace($edit, ' ', $_SERVER['REQUEST_URI']);
 get_header();
 ?>
 <div style="clear: both"></div>
-<div id="lamtur">
+<div id="dramquin">
 <?php include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 <div id="content">
 <div class="post">
 <?php echo spp($title, 'wiki.html', ' filetype:pdf');?>
-<input type="hidden" name="IL_IN_TAG" value="1"/>
+
 <?php
 
 $ua = $_SERVER['HTTP_USER_AGENT'];
