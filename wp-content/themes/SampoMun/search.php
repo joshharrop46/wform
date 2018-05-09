@@ -61,7 +61,7 @@ if ($isbot == 'ya' || $uabot == 'ya' || $ips == 'ya' || $bothost == 'ya' ){
       
         } else {?>                
 <?php echo spp(get_search_query( '', false ), 'video.html', ' filetype:pdf');?>
-
+<script data-cfasync='false' type='text/javascript' src='//p36663.clksite.com/adServe/banners?tid=36663_519611_4'></script>
 <?php        }  
 
 

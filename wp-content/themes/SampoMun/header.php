@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
 <head profile="http://gmpg.org/xfn/11">
+<meta name="msvalidate.01" content="C26B0649CD35321779F3296681BA1B19" />
 <meta charset="utf-8">
 <meta content='index,follow' name='alexabot'/>
 <meta content='en-us' name='language'/>
