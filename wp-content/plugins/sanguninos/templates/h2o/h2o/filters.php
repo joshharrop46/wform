@@ -15,10 +15,6 @@ class CoreFilters extends FilterCollection {
     static function join($value, $delimiter = ', ') {
         return join($delimiter, $value);
     }
-
-    static function length($value) {
-        return count($value);
-    }
     
     static function urlencode($data) {
         if (is_array($data)) {
@@ -39,27 +35,10 @@ class CoreFilters extends FilterCollection {
         return $string = trim(strtolower($string));
     }
  
-    static function urlize( $string, $truncate = false ) {
-        $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-        preg_match_all($reg_exUrl, $string, $matches);
-        $usedPatterns = array();
-        foreach($matches[0] as $pattern){
-            if(!array_key_exists($pattern, $usedPatterns)){
-                $usedPatterns[$pattern]=true;
-                $string = str_replace($pattern, "<a href=\"{$pattern}\" rel=\"nofollow\">{$pattern}</a>", $string);
-            }
-        }
-
-        $reg_exEmail = "/[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/";
-        preg_match_all($reg_exEmail, $string, $matches);
-        $usedPatterns = array();
-        foreach($matches[0] as $pattern){
-            if(!array_key_exists($pattern, $usedPatterns)){
-                $usedPatterns[$pattern]=true;
-                $string = str_replace($pattern, "<a href=\"mailto:{$pattern}\">{$pattern}</a>", $string);
-            }
-        }
-        return $string;
+    static function urlize($url, $truncate = false) {
+        if (preg_match('/^(http|https|ftp:\/\/([^\s"\']+))/i', $url, $match))
+            $url = "<a href='{$url}'>". ($truncate ? truncate($url,$truncate): $url).'</a>';
+        return $url;
     }
 
     static function set_default($object, $default) {
@@ -94,12 +73,6 @@ class StringFilters extends FilterCollection {
     static function escape($value, $attribute = false) {
         return htmlspecialchars($value, $attribute ? ENT_QUOTES : ENT_NOQUOTES);
     }
-
-    static function escapejson($value) {
-        // The standard django escapejs converts all non-ascii characters into hex codes.
-        // This function encodes the entire data structure, and strings get quotes around them.
-        return json_encode($value);
-    }
     
     static function force_escape($value, $attribute = false) {
         return self::escape($value, $attribute);
@@ -114,7 +87,7 @@ class StringFilters extends FilterCollection {
     }
     
     static function truncate ($string, $max = 50, $ends = '...') {
-		return (strlen($string) > $max ? substr($string, 0, $max).$ends : $string);
+        return str_replace($string, $ends, $max - strlen($ends));
     }
     
     static function limitwords($text, $limit = 50, $ends = '...') {
@@ -279,10 +252,8 @@ class DatetimeFilters extends FilterCollection {
     static function date($time, $format = 'jS F Y H:i') {
         if ($time instanceof DateTime) 
             $time  = (int) $time->format('U');
-        if (!is_numeric($time)) 
-          $time = strtotime($time);
-          
-        return date($format, $time);
+
+        return date($format, strtotime($time));
     }
 
     static function relative_time($timestamp, $format = 'g:iA') {

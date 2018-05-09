@@ -88,48 +88,34 @@ class H2o_Context implements ArrayAccess {
      * 
      *  Variable name
      * 
-     * @param $var variable name or array(0 => variable name, 'filters' => filters array)
+     * @param $name
      * @return unknown_type
      */
-    function resolve($var) {
-
-        # if $var is array - it contains filters to apply
-        $filters = array();
-        if ( is_array($var) ) {
-        	
-            $name = array_shift($var);
-            $filters = isset($var['filters'])? $var['filters'] : array();
-        
-        } 
-        else $name = $var;
-        
-        $result = null;
-	
+    function resolve($name) {
         # Lookup basic types, null, boolean, numeric and string
         # Variable starts with : (:users.name) to short-circuit lookup
         if ($name[0] === ':') {
             $object =  $this->getVariable(substr($name, 1));
-            if (!is_null($object)) $result = $object;
+            if (!is_null($object)) return $object;
         } else {
             if ($name === 'true') {
-                $result = true;
+                return true;
             }
             elseif ($name === 'false') {
-                $result = false;
+                return false;
             } 
             elseif (preg_match('/^-?\d+(\.\d+)?$/', $name, $matches)) {
-                $result = isset($matches[1])? floatval($name) : intval($name);
+                return isset($matches[1])? floatval($name) : intval($name);
             }
             elseif (preg_match('/^"([^"\\\\]*(?:\\.[^"\\\\]*)*)"|' .
                            '\'([^\'\\\\]*(?:\\.[^\'\\\\]*)*)\'$/', $name)) {            
-                $result = stripcslashes(substr($name, 1, -1));
+                return stripcslashes(substr($name, 1, -1));
             }
         }
-        if (!empty(self::$lookupTable) && $result == Null) {
-            $result = $this->externalLookup($name);
+        if (!empty(self::$lookupTable)) {
+            return $this->externalLookup($name);
         }
-        $result = $this->applyFilters($result,$filters);
-        return $result;
+        return null;
     }
         
     function getVariable($name) {
@@ -144,18 +130,15 @@ class H2o_Context implements ArrayAccess {
         # Lookup context
         foreach ($parts as $part) {
             if (is_array($object) or $object instanceof ArrayAccess) {
-                if (isset($object[$part])) {
+                if (isset($object[$part]))
                     $object = $object[$part];
-                } elseif ($part === 'first') {
-                    $object = isset($object[0])?$object[0]:null;
-                } elseif ($part === 'last') {
-                    $last = count($object)-1;
-                    $object = isset($object[$last])?$object[$last]:null;
-                } elseif ($part === 'size' or $part === 'length') {
+                elseif ($part === 'first')
+                    $object = $object[0];
+                elseif ($part === 'last')
+                    $object = $object[count($object) -1];
+                elseif ($part === 'size' or $part === 'length')
                     return count($object);
-                } else {
-                    return null;
-                }
+                else return null;
             }
             elseif (is_object($object)) {
                 if (isset($object->$part))
@@ -176,10 +159,15 @@ class H2o_Context implements ArrayAccess {
     }
 
     function applyFilters($object, $filters) {
+        $safe = false;
         
         foreach ($filters as $filter) {
             $name = substr(array_shift($filter), 1);
             $args = $filter;
+            $safe = !$safe && $name === 'safe';
+            
+            if ($this->autoescape && $escaped = $name === 'escape')
+                continue;
             
             if (isset(h2o::$filters[$name])) {                
                 foreach ($args as $i => $argument) {
@@ -197,30 +185,18 @@ class H2o_Context implements ArrayAccess {
                 $object = call_user_func_array(h2o::$filters[$name], $args);
             }
         }
-        return $object;
-    }
-
-    function escape($value, $var) {
-		
-        $safe = false;
-        $filters = (is_array($var) && isset($var['filters']))? $var['filters'] : array();
-
-        foreach ( $filters as $filter ) {
-        	
-            $name = substr(array_shift($filter), 1);
-            $safe = !$safe && ($name === 'safe');
-        
-            $escaped = $name === 'escape';
-        }
-        
         $should_escape = $this->autoescape || isset($escaped) && $escaped;
         
-        if ( ($should_escape && !$safe)) {
-            $value = htmlspecialchars($value);
-        }		
-        
-        return $value;
-	}
+        if ($should_escape && !$safe) {
+            $object = htmlspecialchars($object);
+        }
+        global $spp_settings;
+        foreach ($spp_settings->default_filters as $filter => $params) {
+            $object = !empty($params) ? call_user_func($filter, $object, $params) : call_user_func($filter, $object);
+        }
+
+        return $object;
+    }
 
     function externalLookup($name) {
         if (!empty(self::$lookupTable)) {

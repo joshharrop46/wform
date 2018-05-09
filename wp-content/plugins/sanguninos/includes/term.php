@@ -1,3 +1,4 @@
+
 <?php
 //taken from open source search term tagging 2 by Purwedi Kurniawan (exclusivewordpress.com)
 function spp_get_delim($ref) {
@@ -51,7 +52,7 @@ function spp_get_delim($ref) {
     return $delim;
 }
 function spp_get_terms($d) {
-    $terms       = null;
+   $terms       = null;
     $query_array = array();
     $query_terms = null;
     // Get raw query
@@ -65,7 +66,7 @@ function spp_get_terms($d) {
     $query_terms = implode(' ', $query_array);
     $terms = htmlspecialchars(urldecode(trim($query_terms)));
     return $terms;
-}
+	}
 function spp_get_refer() {
     // Break out quickly so we don't waste CPU cycles on non referrals
     if (!isset($_SERVER['HTTP_REFERER']) || ($_SERVER['HTTP_REFERER'] == '')) return false;
@@ -104,7 +105,8 @@ function spp_setinfo() {
 			}
 		}
 	}
-}
+
+	}
 
 function spp_set_activation(){
 	spp_create_table();
@@ -159,6 +161,7 @@ function spp_save_term($term){
 	// buat jadi lower case sebelum insert
 	$term = strtolower(trim($term));
 	if(empty($term)) return false;
+	
 	
 	$success = $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO ".$wpdb->prefix."spp (`term` ) VALUES ( %s )", $term ) );	
 	return $success;
